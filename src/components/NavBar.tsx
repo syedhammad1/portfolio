@@ -24,8 +24,8 @@ export default function NavBar() {
           <ThemeToggle />
         </div>
         <div>
-          {navLinks.map(({ href, label, Icon, download }) => (
-            <NavLink key={href} href={href} download={download}>
+          {navLinks.map(({ href, label, Icon }) => (
+            <NavLink key={href} href={href}>
               <button className="focus:outline-none py-1 px-2 capitalize f-link">
                 <Icon className="text-lg mr-2 inline-block align-[-0.2em]" />
                 {label}

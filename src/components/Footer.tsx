@@ -11,8 +11,8 @@ export default function Footer() {
         </div>
         <div className="text-center md:w-2/4 mb-3 md:mb-0">
           <ul>
-            {navLinks.map(({ href, label, download }) => (
-              <NavLink key={href} href={href} download={download}>
+            {navLinks.map(({ href, label }) => (
+              <NavLink key={href} href={href}>
                 <li className="uppercase inline-block text-xs md:mr-6 py-1 px-2 f-link">{label}</li>
               </NavLink>
             ))}

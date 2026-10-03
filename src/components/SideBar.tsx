@@ -33,8 +33,8 @@ export default function SideBar() {
                 <span className="ml-4">{site.phone}</span>
               </div>
             </a>
-            {order.map(({ href, label, Icon, download }) => (
-              <NavLink key={href} href={href} download={download}>
+            {order.map(({ href, label, Icon }) => (
+              <NavLink key={href} href={href}>
                 <div className="mt-3 flex items-center">
                   <Icon className="text-lg" />
                   <span className="ml-4 capitalize">{label}</span>
