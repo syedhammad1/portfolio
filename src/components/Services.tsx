@@ -12,29 +12,34 @@ export default function Services() {
   const root = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      // Section pins to the top and the illustration assembles as you scroll
-      gsap
-        .timeline({
-          scrollTrigger: { trigger: root.current, start: "top top", end: "+=300%", pin: true, scrub: true },
-        })
-        .from(".illustration__img--1", { duration: 0.5, scale: 0.5 }, 0)
-        .from(".illustration__img--2", { duration: 0.5, opacity: 0, y: -50 }, 0.2)
-        .from(".illustration__img--3", { duration: 0.5, opacity: 0, y: -50 }, 0.5)
-        .from(".data-1", { duration: 1, opacity: 0, stagger: 1 }, 0.7)
-        .from(".illustration__img--5", { duration: 0.5, opacity: 0, x: 100 }, 1.4)
-        .from(".illustration__img--6", { duration: 0.5, opacity: 0, x: -100 }, 1.7)
-        .from(".data-2", { duration: 1, opacity: 0, stagger: 1 }, 1.9)
-        .from(".illustration__img--4", { duration: 0.5, opacity: 0, x: -100 }, 2.6)
-        .from(".illustration__img--7", { duration: 0.5, opacity: 0, x: 100 }, 2.9)
-        .to(".see-project-btn", { duration: 1, opacity: 1 }, 3.5);
-    }, root);
-    // Re-measure once the page slide-in has finished
-    const t = setTimeout(() => ScrollTrigger.refresh(), 400);
-    return () => {
-      clearTimeout(t);
-      ctx.revert();
-    };
+    const media = gsap.matchMedia();
+    media.add("(min-width: 1024px)", () => {
+      const ctx = gsap.context(() => {
+        // Pin the section on desktop while its illustration assembles on scroll.
+        gsap
+          .timeline({
+            scrollTrigger: { trigger: root.current, start: "top top", end: "+=300%", pin: true, scrub: true },
+          })
+          .from(".illustration__img--1", { duration: 0.5, scale: 0.5 }, 0)
+          .from(".illustration__img--2", { duration: 0.5, opacity: 0, y: -50 }, 0.2)
+          .from(".illustration__img--3", { duration: 0.5, opacity: 0, y: -50 }, 0.5)
+          .from(".data-1", { duration: 1, opacity: 0, stagger: 1 }, 0.7)
+          .from(".illustration__img--5", { duration: 0.5, opacity: 0, x: 100 }, 1.4)
+          .from(".illustration__img--6", { duration: 0.5, opacity: 0, x: -100 }, 1.7)
+          .from(".data-2", { duration: 1, opacity: 0, stagger: 1 }, 1.9)
+          .from(".illustration__img--4", { duration: 0.5, opacity: 0, x: -100 }, 2.6)
+          .from(".illustration__img--7", { duration: 0.5, opacity: 0, x: 100 }, 2.9)
+          .to(".see-project-btn", { duration: 1, opacity: 1 }, 3.5);
+      }, root);
+
+      // Re-measure once the page slide-in has finished.
+      const timeout = setTimeout(() => ScrollTrigger.refresh(), 400);
+      return () => {
+        clearTimeout(timeout);
+        ctx.revert();
+      };
+    });
+    return () => media.revert();
   }, []);
 
   return (

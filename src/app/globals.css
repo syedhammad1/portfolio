@@ -225,7 +225,12 @@ button {
   text-align: center;
 }
 .see-project-btn {
-  opacity: 0;
+  opacity: 1;
+}
+@media (min-width: 1024px) {
+  .see-project-btn {
+    opacity: 0;
+  }
 }
 
 /* ---------- project cards ---------- */

@@ -12,8 +12,9 @@ export const site = {
     "I turn complex problems into scalable products. I'm a senior engineer who designs resilient backend systems and crafts fast, polished frontends, owning the full journey from the first commit to production at scale.",
   heroImage: "/img/me.png",
   aboutImage: "/img/me2.png",
-  // Drop your PDF at public/resume.pdf; visitors download it with this filename
-  resume: { href: "/pdf/Syed_hammad_Resume.pdf", fileName: "Syed-Hammad-Resume.pdf" },
+  resume: {
+    href: "https://drive.google.com/file/d/116zNyD-0_Ve5NOtMqwWLtLE8zZEltKif/view",
+  },
   socials: {
     linkedin: "https://www.linkedin.com/in/syed287",
     github: "https://github.com/syedhammad1",

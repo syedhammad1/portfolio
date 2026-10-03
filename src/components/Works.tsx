@@ -9,7 +9,7 @@ export default function Works({ showBorders = false }: { showBorders?: boolean }
       <Projects showBorders={showBorders} />
       <div className="max-w-xl shadow-2xl h-40 py-5 md:py-0 px-5 md:px-10 mt-10 md:flex justify-between items-center">
         <p className="text-lg font-bold mb-3 md:mb-0">I cook with these ingredients 👉</p>
-        <AnimatedButton title="MY RESUME" href={site.resume.href} download={site.resume.fileName} />
+        <AnimatedButton title="MY RESUME" href={site.resume.href} />
       </div>
     </div>
   );
