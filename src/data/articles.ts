@@ -1,16 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
-
-export type Article = {
-  slug: string;
-  title: string;
-  teaser: string;
-  author: string;
-  authorImage: string;
-  date: string;
-  bodyFile: string;
-};
-
 export type MediumArticle = {
   slug: string;
   title: string;
@@ -49,10 +36,3 @@ export const mediumArticles: MediumArticle[] = [
     url: "https://medium.com/@shammad287/automate-your-firebase-functions-deployment-with-github-actions-continuous-integration-b61b94d9e1a7",
   },
 ];
-
-export function getArticleBody(article: Article) {
-  return fs.readFileSync(
-    path.join(process.cwd(), "src/data/articles", article.bodyFile),
-    "utf8",
-  );
-}
